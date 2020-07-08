@@ -541,6 +541,13 @@
         );
       };
 
+      this.goToFileExplorer = function (site) {
+        me.setCookie('crafterSite', site.siteId);
+        $timeout(function () {
+          $window.location.href = `/studio/plugin?site=${site.siteId}&type=apps&name=file-explorer&file=index.html`;
+        }, 0, false);
+      };
+
       this.create = function(site) {
         return $http.post(api('create'), site);
       };
@@ -1245,6 +1252,8 @@
       $scope.editSite = sitesService.editSite;
 
       $scope.goToDashboard = sitesService.goToDashboard;
+
+      $scope.goToFileExplorer = sitesService.goToFileExplorer;
 
       $scope.createSites = false;
 
